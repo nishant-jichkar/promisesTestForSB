@@ -1,0 +1,52 @@
+<!-- <html>
+    <head>
+        <title>Promise with read file</title>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <input type="text" id="getId"/>
+        <input type="button" id="popId" value="Search result" onclick="btnClick()"/>
+        <p id="name"></p>
+        <p id="marks"></p>
+    </body>
+</html> -->
+
+<html>
+	<head>
+		<title>jsonp test</title>
+		<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>		
+		<script type="text/javascript">
+            $(function(){				
+                $('#popId').click(function(e){
+                    e.preventDefault();
+                    console.log('popId clicked');
+                    
+					
+					$.ajax({
+						type: 'GET',
+						//data: JSON.stringify(data), todo: send Id
+				        contentType: 'application/json',
+                        url: 'http://localhost:3000/',						
+                        success: function(data) {
+                            console.log('success');
+                            console.log(JSON.stringify(data));
+                            $('#name').text(data[0].Name)
+                            $('#marks').text(data[0].Marks)
+                            
+                        }
+                    });
+					
+                });				
+            });
+        </script>
+    </head>
+    <body>
+        <div id="select_div">
+            <input type="text" id="getId"/>
+            <input type="button" id="popId" value="Search result"/>
+            <spam id="name"></spam>
+            <spam id="marks"></spam>
+        </div>
+          
+    </body>
+</html>
